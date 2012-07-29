@@ -168,7 +168,7 @@ public class Dataset {
     
     public void dumpWekaFormatTestSet(){		
 	Writer.WriteFromList(Config.WEKA_FORMAT_TEST_DATA_SET_PATH, wekaHeader.toArrayList(),"\n");
-	Writer.WriteFromArrayList(Config.WEKA_FORMAT_TEST_DATA_SET_PATH, trainset.toArrayList(),true);
+	Writer.WriteFromArrayList(Config.WEKA_FORMAT_TEST_DATA_SET_PATH, testset.toArrayList(),true);
     }
     
     public void dumpWekaFormatTrainSet(){	
