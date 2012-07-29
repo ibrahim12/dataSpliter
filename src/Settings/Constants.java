@@ -10,4 +10,6 @@ package Settings;
  */
 public class Constants {
     
+
+   
 }
