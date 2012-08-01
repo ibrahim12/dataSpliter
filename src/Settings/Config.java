@@ -14,7 +14,9 @@ public class Config {
     public static String WEKA_FORMAT_DATA_SET_PATH = "src\\Files\\weka_dataset.arff";
     public static String DATA_SET_PATH = "src\\Files\\dataset.txt";
     public static String TRAIN_DATA_SET_PATH = "src\\Files\\trianset.txt";
+    public static String TRAIN_DATA_SET_WIHT_CLASS_MAP_PATH = "src\\Files\\trianset_class_mapped.txt";    
     public static String TEST_DATA_SET_PATH = "src\\Files\\testset.txt";
+    public static String TEST_DATA_SET_WIHT_CLASS_MAP_PATH = "src\\Files\\testset_class_mapped.txt";    
     
     public static String WEKA_FORMAT_TRAIN_DATA_SET_PATH = "src\\Files\\weka_trianset.arff";
     public static String WEKA_FORMAT_TEST_DATA_SET_PATH = "src\\Files\\weka_testset.arff";
@@ -29,5 +31,8 @@ public class Config {
     public static final int[] classes = new int[]{0,1,2};
     
     public static final String WEKA_HEADER = "Data set is not generated from weka file.";
+    
+    public static final int[][] classValueMap = { {1,0,0},{0,1,0},{0,0,1} } ;
+    
      
 }

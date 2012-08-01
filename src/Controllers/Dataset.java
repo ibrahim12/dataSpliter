@@ -166,6 +166,32 @@ public class Dataset {
 	Writer.WriteFromArrayList(Config.TEST_DATA_SET_PATH, testset.toArrayList());
     }
     
+    public void dumpTrainSetWithClassMap(){
+	ListInt2D temp = (ListInt2D) trainset.clone();
+	for(int i=0;i<temp.size();i++){	    
+	    int classVal =  temp.get(i).get(temp.get(i).size()-1);
+	    temp.get(i).remove(classVal);
+	    for(int j=0;j<Config.classValueMap[classVal].length;j++){
+		temp.get(i).add(Config.classValueMap[classVal][j]);
+	    }
+	}
+	Writer.WriteFromArrayList(Config.TRAIN_DATA_SET_WIHT_CLASS_MAP_PATH, temp.toArrayList());
+	
+    }
+    
+//    public void dumpTestSetWithClassMap(){
+//	ListInt2D temp = (ListInt2D) testset.clone();
+//	for(int i=0;i<temp.size();i++){	    
+//	    int classVal =  temp.get(i).get(temp.get(i).size()-1);
+//	    temp.get(i).remove(classVal);
+//	    for(int j=0;j<Config.classValueMap[classVal].length;j++){
+//		temp.get(i).add(Config.classValueMap[classVal][j]);
+//	    }
+//	}
+//	Writer.WriteFromArrayList(Config.TEST_DATA_SET_WIHT_CLASS_MAP_PATH, temp.toArrayList());
+//	
+//    }
+    
     public void dumpWekaFormatTestSet(){		
 	Writer.WriteFromList(Config.WEKA_FORMAT_TEST_DATA_SET_PATH, wekaHeader.toArrayList(),"\n");
 	Writer.WriteFromArrayList(Config.WEKA_FORMAT_TEST_DATA_SET_PATH, testset.toArrayList(),true);
@@ -183,8 +209,7 @@ public class Dataset {
 	for (int i = 0; i < classes.length; i++) {
 	    Printer.print("Instance Count Class " + i + ": " + dataSetSeparated[i].size());
 	}
-	Printer.print("Weka Header");
-	//Printer.print(wekaHeader);
+	
     }
 
     public static void main(String[] args) {
@@ -195,8 +220,9 @@ public class Dataset {
 	dataset.initClassSeperatedDataset(dataset.dataset);
 	dataset.initSpecifiedTrainSet();
 	dataset.initSpecifiedTestSet();
-	dataset.dumpTestset();
-	dataset.dumpTrainset();	
+	dataset.dumpTestset();			
+	dataset.dumpTrainset();		
+	dataset.dumpTrainSetWithClassMap();	
 	dataset.dumpWekaFormatTrainSet();
 	dataset.dumpWekaFormatTestSet();
 	dataset.printInfo();	
